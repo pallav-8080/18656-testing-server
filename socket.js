@@ -1,8 +1,12 @@
 
 var socketio = require('socket.io')
-function spinWebSocketserver(){
+function spinWebSocketserver(server){
 
-    const io = new socketio.Server(8000);
+    const io = new socketio.Server(server, {
+        cors: {
+            origin: "*",
+        }
+    });
     global.io = io;
     io.on('connection', function (socket) {
         socket.join(socket.request._query);

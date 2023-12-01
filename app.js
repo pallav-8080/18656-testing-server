@@ -2,10 +2,14 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var socket = require("./socket")
+var cors = require('cors');
+// var socket = require("./socket")
+
 
 var app = express();
-socket();
+app.use(cors())
+
+// socket();
 
 var orderPlacementRouter = require('./routes/orderPlacement');
 var orderStatusRouter = require('./routes/orderStatus');

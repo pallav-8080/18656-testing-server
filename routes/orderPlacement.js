@@ -10,5 +10,11 @@ router.post('/', function(req, res) {
   res.send({ title: 'placed' });
 });
 
+router.get('/test', function(req, res) {
+  console.log(global.io);
+
+  res.render('test');
+});
+
 
 module.exports = router;
