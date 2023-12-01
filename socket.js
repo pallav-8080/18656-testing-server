@@ -1,8 +1,8 @@
 
 var socketio = require('socket.io')
-function spinWebSocketserver(server){
+function spinWebSocketserver(){
 
-    const io = new socketio.Server(server);
+    const io = new socketio.Server(8000);
     global.io = io;
     io.on('connection', function (socket) {
         socket.join(socket.request._query);
