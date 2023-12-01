@@ -11,7 +11,9 @@ function spinWebSocketserver(server){
     io.on('connection', function (socket) {
         socket.join(socket.request._query);
         console.log("Someone connected to the socket ...");
+        socket.emit("hello", "world");
     });
+    
 }
 
 module.exports = spinWebSocketserver;
