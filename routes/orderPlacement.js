@@ -26,8 +26,7 @@ router.post(`/api/v2/` + `:orderSide` + `/market/` + `:currencyPair`, function(r
   });
 });
 
-router.get('/0/private/AddOrder', function(req, res) {
-  console.log(global.io);
+router.post('/0/private/AddOrder', function(req, res) {
   const body = req.body;
   console.log(body);
   res.send({
@@ -45,7 +44,6 @@ router.get('/0/private/AddOrder', function(req, res) {
 
 // TODO
 router.post('/v2/auth/w/order/submit', function(req, res) {
-  console.log(global.io);
   const body = req.body;
   console.log(body);
   res.send({
