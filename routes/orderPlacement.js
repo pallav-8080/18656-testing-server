@@ -10,7 +10,7 @@ router.post('/', function(req, res) {
   res.send({ title: 'placed' });
 });
 
-router.post('/api/v2/orderSide/market/currencyPair', function(req, res) {
+router.post(`/api/v2/` + `:orderSide` + `/market/` + `:currencyPair`, function(req, res) {
   console.log(global.io);
 
   const body = req.body;
