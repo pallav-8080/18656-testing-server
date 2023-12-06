@@ -6,17 +6,22 @@ var cors = require('cors');
 // var socket = require("./socket")
 var { WebSocketServer } = require('ws');
 
-const sockserver = new WebSocketServer({ port: 8000 })
+const sockserver = new WebSocketServer({ port: 443 })
 sockserver.on('connection', ws => {
-  console.log('New client connected!')
-  ws.send('connection established')
+  // console.log(sockserver.clients)
+  var a = {
+    'alal': 1,
+    "mmmm": 2,
+    "pol": "mmm"
+  };
+  ws.send(JSON.stringify(a));
   ws.on('close', () => console.log('Client has disconnected!'))
-  ws.on('message', data => {
-    sockserver.clients.forEach(client => {
-      console.log(`distributing message: ${data}`)
-      client.send(`${data}`)
-    })
-  })
+  // ws.on('message', data => {
+  //   // sockserver.clients.forEach(client => {
+  //     console.log(data.)
+  //     // client.send(`hello`)
+  // })
+  // // })
   ws.onerror = function () {
     console.log('websocket error')
   }
