@@ -68,9 +68,25 @@ router.post('/0/private/QueryOrders', function(req, res) {
     }
   });
 });
-// TODO
+
 router.post(`/auth/r/order/` + `:currencyPair:` + `:orderId` + `/trades`, function(req, res) {
-  res.send({'id': 1010, 'status':'fulfilled'});
+  res.send([
+    [
+      399251013,
+      "tDOTUSD",
+      1573485493000,
+      1747566428,
+      150.0,
+      5.2529,
+      null,
+      null,
+      1,
+      0,
+      "USD",
+      1234 //CID
+    ]
+  ]
+  );
 });
 
 module.exports = router;

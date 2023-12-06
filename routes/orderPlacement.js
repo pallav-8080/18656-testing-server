@@ -42,21 +42,54 @@ router.post('/0/private/AddOrder', function(req, res) {
   });
 });
 
-// TODO
 router.post('/v2/auth/w/order/submit', function(req, res) {
   const body = req.body;
   console.log(body);
-  res.send({
-    "error": [],
-    "result": {
-        "descr": {
-            "order": "sell 22.450000 FETUSD @ limit 58.14"
-        },
-        "txid": [
-            "OU22CG-KLAF2-FWUDD7"
-        ]
-    }
-  });
+  res.send([
+    1641007395796,
+    "on-req",
+    12345,
+    null,
+    [
+      [
+        1747566428,
+        null,
+        1678987199446,
+        "tDOTUSD",
+        1641007395796,
+        1641007395798,
+       150.0,
+        150.0,
+        "MARKET",
+        null,
+        null,
+        null,
+        0,
+        "ACTIVE",
+        null,
+        null,
+        5.2529,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        0,
+         null,
+        null,
+        null,
+        "API>BFX",
+        null,
+        null,
+        null
+      ]
+    ],
+    null,
+    "SUCCESS",
+    "Submitting exchange market buy order for 150 DOT."
+  ]);
 });
 
 
