@@ -16,7 +16,7 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
+// no socket
 var server = http.createServer(app);
 
 /**
