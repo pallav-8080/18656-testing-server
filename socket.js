@@ -1,26 +1,28 @@
-var socketio = require('socket.io')
 var data = require('./liveFeed.js')
+var WsServer= require('ws').Server;
 
 function spinWebSocketserver(server){
 
-    const io = new socketio.Server(server, {
-        cors: {
-            origin: "*",
-        }
-    });
-    global.io = io;
-    io.on('connection', function (socket) {
-        console.log("Someone connected to the socket ...");
-        socket.emit("hello", "world");
-        console.log(data.length);
-        let i=0;
-        let feed = setInterval(() => {
-            socket.emit("liveMarketData", data[i]);
-            if(i<data.length-1)
-                i+=1;
-        }, 500);
-        
-    });
+const sockserver = new WsServer({ server: server })
+sockserver.on('connection', ws => {
+  console.log("ll")
+  var a = {
+    'alal': 1,
+    "mmmm": 2,
+    "pol": "mmm"
+  };
+  ws.send(JSON.stringify(a));
+  ws.on('close', () => console.log('Client has disconnected!'))
+  // ws.on('message', data => {
+  //   // sockserver.clients.forEach(client => {
+  //     console.log(data.)
+  //     // client.send(`hello`)
+  // })
+  // // })
+  ws.onerror = function () {
+    console.log('websocket error')
+  }
+ })
     
 }
 

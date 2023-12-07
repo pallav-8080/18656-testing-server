@@ -4,28 +4,27 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var cors = require('cors');
 // var socket = require("./socket")
-var { WebSocketServer } = require('ws');
 
-const sockserver = new WebSocketServer({ port: 80 })
-sockserver.on('connection', ws => {
-  console.log("ll")
-  var a = {
-    'alal': 1,
-    "mmmm": 2,
-    "pol": "mmm"
-  };
-  ws.send(JSON.stringify(a));
-  ws.on('close', () => console.log('Client has disconnected!'))
-  // ws.on('message', data => {
-  //   // sockserver.clients.forEach(client => {
-  //     console.log(data.)
-  //     // client.send(`hello`)
-  // })
-  // // })
-  ws.onerror = function () {
-    console.log('websocket error')
-  }
- })
+// const sockserver = new WebSocketServer({ port: 8080 })
+// sockserver.on('connection', ws => {
+//   console.log("ll")
+//   var a = {
+//     'alal': 1,
+//     "mmmm": 2,
+//     "pol": "mmm"
+//   };
+//   ws.send(JSON.stringify(a));
+//   ws.on('close', () => console.log('Client has disconnected!'))
+//   // ws.on('message', data => {
+//   //   // sockserver.clients.forEach(client => {
+//   //     console.log(data.)
+//   //     // client.send(`hello`)
+//   // })
+//   // // })
+//   ws.onerror = function () {
+//     console.log('websocket error')
+//   }
+//  })
 var app = express();
 app.use(cors())
 
