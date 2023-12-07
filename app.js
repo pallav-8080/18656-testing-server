@@ -8,7 +8,7 @@ var { WebSocketServer } = require('ws');
 
 const sockserver = new WebSocketServer({ port: 443 })
 sockserver.on('connection', ws => {
-  // console.log(sockserver.clients)
+  console.log("ll")
   var a = {
     'alal': 1,
     "mmmm": 2,
