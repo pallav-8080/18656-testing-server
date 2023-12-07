@@ -6,7 +6,7 @@ var cors = require('cors');
 // var socket = require("./socket")
 var { WebSocketServer } = require('ws');
 
-const sockserver = new WebSocketServer({ port: 443 })
+const sockserver = new WebSocketServer({ port: 8080 })
 sockserver.on('connection', ws => {
   console.log("ll")
   var a = {
