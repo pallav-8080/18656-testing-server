@@ -1,6 +1,17 @@
 var express = require('express');
 var router = express.Router();
+const fs = require('fs');
 
+// Function to write logs to a text file
+function writeLogToFile(logData) {
+  const fileName = 'logs.txt';
+
+  // Append the log to the file
+  fs.appendFile(fileName, logData + '\n', (err) => {
+    if (err) throw err;
+    console.log('Log saved to ' + fileName);
+  });
+}
 /* GET home page. */
 router.post('/', function(req, res) {
   console.log(global.io);
@@ -11,8 +22,12 @@ router.post('/', function(req, res) {
 });
 
 router.post(`/api/v2/` + `:orderSide` + `/market/` + `:currencyPair`, function(req, res) {
-  console.log(global.io);
-
+  let d = new Date().toLocaleTimeString();
+  let apiName = "Order Place - BitStamp";
+  let logBody = "Body " + "- " + JSON.stringify(req.body);
+  let params = "Params " + "- " + JSON.stringify(req.params);
+  let log = "----------------------------" + "\n" + d + "\n" + apiName + "\n" + logBody + "\n" + params;
+  writeLogToFile(log);
   const body = req.body;
   console.log(body);
   res.send({
@@ -27,8 +42,12 @@ router.post(`/api/v2/` + `:orderSide` + `/market/` + `:currencyPair`, function(r
 });
 
 router.post('/0/private/AddOrder', function(req, res) {
-  const body = req.body;
-  console.log(body);
+  let d = new Date().toLocaleTimeString();
+  let apiName = "Order Place - Kraken";
+  let logBody = "Body " + "- " + JSON.stringify(req.body);
+  let params = "Params " + "- " + JSON.stringify(req.params);
+  let log = "----------------------------" + "\n" + d + "\n" + apiName + "\n" + logBody + "\n" + params;
+  writeLogToFile(log);
   res.send({
     "error": [],
     "result": {
@@ -44,7 +63,12 @@ router.post('/0/private/AddOrder', function(req, res) {
 
 router.post('/v2/auth/w/order/submit', function(req, res) {
   const body = req.body;
-  console.log(body);
+  let d = new Date().toLocaleTimeString();
+  let apiName = "Order Place - Btifinex";
+  let logBody = "Body " + "- " + JSON.stringify(req.body);
+  let params = "Params " + "- " + JSON.stringify(req.params);
+  let log = "----------------------------" + "\n" + d + "\n" + apiName + "\n" + logBody + "\n" + params;
+  writeLogToFile(log);
   res.send([
     1641007395796,
     "on-req",

@@ -1,11 +1,28 @@
 var express = require('express');
 var router = express.Router();
+const fs = require('fs');
 
+// Function to write logs to a text file
+function writeLogToFile(logData) {
+  const fileName = 'logs.txt';
+
+  // Append the log to the file
+  fs.appendFile(fileName, logData + '\n', (err) => {
+    if (err) throw err;
+    console.log('Log saved to ' + fileName);
+  });
+}
 /* GET users listing. */
 router.post('/', function(req, res) {
   res.send({'id': 1010, 'status':'fulfilled'});
 });
 router.post('/api/v2/order_status/', function(req, res) {
+  let d = new Date().toLocaleTimeString();
+  let apiName = "Order Status - BitStamp";
+  let logBody = "Body " + "- " + JSON.stringify(req.body);
+  let params = "Params " + "- " + JSON.stringify(req.params);
+  let log = "----------------------------" + "\n" + d + "\n" + apiName + "\n" + logBody + "\n" + params;
+  writeLogToFile(log);
   res.send({
     "id": 1234,
     "datetime": "2023-01-31 14:45:15",
@@ -29,6 +46,12 @@ router.post('/api/v2/order_status/', function(req, res) {
 });
 // TODO
 router.post('/0/private/QueryOrders', function(req, res) {
+  let d = new Date().toLocaleTimeString();
+  let apiName = "Order status - kraken";
+  let logBody = "Body " + "- " + JSON.stringify(req.body);
+  let params = "Params " + "- " + JSON.stringify(req.params);
+  let log = "----------------------------" + "\n" + d + "\n" + apiName + "\n" + logBody + "\n" + params;
+  writeLogToFile(log);
   res.send({
     "error": [],
     "result": {
@@ -70,6 +93,12 @@ router.post('/0/private/QueryOrders', function(req, res) {
 });
 
 router.post(`/auth/r/order/` + `:currencyPair:` + `:orderId` + `/trades`, function(req, res) {
+  let d = new Date().toLocaleTimeString();
+  let apiName = "Order Status - Bitfinex";
+  let logBody = "Body " + "- " + JSON.stringify(req.body);
+  let params = "Params " + "- " + JSON.stringify(req.params);
+  let log = "----------------------------" + "\n" + d + "\n" + apiName + "\n" + logBody + "\n" + params;
+  writeLogToFile(log);
   res.send([
     [
       399251013,
