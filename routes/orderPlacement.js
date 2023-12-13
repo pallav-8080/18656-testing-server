@@ -30,15 +30,54 @@ router.post(`/api/v2/` + `:orderSide` + `/market/` + `:currencyPair`, function(r
   writeLogToFile(log);
   const body = req.body;
   console.log(body);
-  res.send({
-    "id": "1234",
-    "market": "FET/USD",
-    "datetime": "2023-12-31 14:43:15.796000",
-    "type": "0",
-    "price": "22.45",
-    "amount": "58.06000000",
-    "client_order_id": "123456789"
+  let pair = req.params.currencyPair;
+  let amount = req.body.amount;
+  let price = req.body.price;
+  let side = req.params.orderSide;
+  if(pair.toLowerCase() == "solusd" && side == "buy" ){
+    res.send({
+      "id": "1234",
+      "market": "FET/USD",
+      "datetime": "2023-12-31 14:43:15.796000",
+      "type": "0",
+      "price": "22.45",
+      "amount": "58.06000000",
+      "client_order_id": "123456789"
+    });
+  } else if(pair.toLowerCase() == "fetusd" && side == "buy" ){
+    res.send({
+      "id": "1236",
+      "market": "FET/USD",
+      "datetime": "2023-12-31 14:46:15.796000",
+      "type": "0",
+      "price": "0.4883",
+      "amount": "108.00000000",
+      "client_order_id": "123456791"
   });
+  } else if(pair.toLowerCase() == "dotusd" && side == "sell" && ( amount == "150.0" || amount == 150.0 || amount == 150) ){
+    res.send({
+      "id": "1235",
+      "market": "DOT/USD",
+      "datetime": "2023-12-31 14:45:15.796000",
+      "type": "0",
+      "price": "5.314",
+      "amount": "150.00000000",
+      "client_order_id": "123456790"
+    })
+  } else if(pair.toLowerCase() == "dotusd" && side == "sell" && ( amount == "30.0" || amount == 30.0 || amount == 30) ){
+    res.send({
+      "id": "1249",
+      "market": "DOT/USD",
+      "datetime": "2023-12-31 14:55:15.796000",
+      "type": "0",
+      "price": "5.314",
+      "amount": "30.00000000",
+      "client_order_id": "123456822"
+  })
+ } else {
+    res.send({});
+}
+
 });
 
 router.post('/0/private/AddOrder', function(req, res) {
@@ -48,6 +87,11 @@ router.post('/0/private/AddOrder', function(req, res) {
   let params = "Params " + "- " + JSON.stringify(req.params);
   let log = "----------------------------" + "\n" + d + "\n" + apiName + "\n" + logBody + "\n" + params;
   writeLogToFile(log);
+  let pair = req.body.pair;
+  let amount = req.body.volume;
+  let price = req.body.price;
+  let side = req.body.type;
+  if(side == "sell" && (pair== "XXFETUSD" || pair == "FETUSD")){
   res.send({
     "error": [],
     "result": {
@@ -59,7 +103,23 @@ router.post('/0/private/AddOrder', function(req, res) {
         ]
     }
   });
+} else if(side == "sell" && (pair== "XXSOLUSD" || pair == "SOLUSD")){
+  res.send({
+    "error": [],
+    "result": {
+        "descr": {
+            "order": "sell 35.000000 SOLUSD @ limit 28.22"
+        },
+        "txid": [
+            "OU22CG-KLAF2-FWUDD7"
+        ]
+    }
+  })
+} else {
+  res.send({});
+}
 });
+
 
 router.post('/v2/auth/w/order/submit', function(req, res) {
   const body = req.body;
@@ -69,7 +129,8 @@ router.post('/v2/auth/w/order/submit', function(req, res) {
   let params = "Params " + "- " + JSON.stringify(req.params);
   let log = "----------------------------" + "\n" + d + "\n" + apiName + "\n" + logBody + "\n" + params;
   writeLogToFile(log);
-  res.send([
+  if((req.body.amount == "150.0" || req.body.amount == 150.0) && req.body.symbol == "tDOTUSD"){
+    res.send([
     1641007395796,
     "on-req",
     12345,
@@ -114,6 +175,9 @@ router.post('/v2/auth/w/order/submit', function(req, res) {
     "SUCCESS",
     "Submitting exchange market buy order for 150 DOT."
   ]);
+} else {
+  res.send({});
+}
 });
 
 

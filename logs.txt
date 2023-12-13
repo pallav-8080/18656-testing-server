@@ -1,0 +1,15 @@
+----------------------------
+2:28:24 PM
+Order Place - Kraken
+Body - {}
+Params - {}
+----------------------------
+2:29:13 PM
+Order Place - BitStamp
+Body - {}
+Params - {"orderSide":"buy","currencyPair":"solusd"}
+----------------------------
+2:30:10 PM
+Order Place - Btifinex
+Body - {}
+Params - {}
