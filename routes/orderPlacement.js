@@ -37,10 +37,10 @@ router.post(`/api/v2/` + `:orderSide` + `/market/` + `:currencyPair`, function(r
   if(pair.toLowerCase() == "solusd" && side == "buy" ){
     res.send({
       "id": "1234",
-      "market": “SOL/USD",
+      "market": 'SOL/USD",
   		"datetime": "2023-12-31 14:43:15.796000",
   		"type": "0",
-  		"price": "28.06”,
+  		"price": "28.06",
   		"amount": "35.00000000",
   		"client_order_id": "123456789"
     });
