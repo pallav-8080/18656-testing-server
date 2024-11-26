@@ -30,12 +30,12 @@ router.post('/api/v2/order_status/', function(req, res) {
       "datetime": "2023-01-31 14:45:15",
       "type": "0",
       "status": "Finished",
-      "market": "FET/USD",
+      "market": "SOL/USD",
       "transactions": [
           {
               "tid": "1458532827766784",
               "price": "58.06",
-              "{FET}": "22.45",
+              "{SOL}": "22.45",
               "{USD}": "1",
               "fee": "0.00",
               "datetime": "2023-01-31 14:45:15",
@@ -137,7 +137,7 @@ router.post('/0/private/QueryOrders', function(req, res) {
             "starttm": 0,
             "expiretm": 0,
             "descr": {
-                "pair": "FETUSD",
+                "pair": "SOLUSD",
                 "type": "sell",
                 "ordertype": "market",
                 "price": "58.14",
