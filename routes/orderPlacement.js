@@ -99,7 +99,7 @@ router.post('/0/private/AddOrder', function(req, res) {
             "order": "sell 22.450000 FETUSD @ limit 58.14"
         },
         "txid": [
-            "OU22CG-KLAF2-FWUDD7"
+            "OU22CG-KLAF2-FWUDD8"
         ]
     }
   });
